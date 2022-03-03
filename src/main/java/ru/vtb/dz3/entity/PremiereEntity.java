@@ -1,22 +1,29 @@
-package ru.vtb.dz3.model;
+package ru.vtb.dz3.entity;
 
-public class Premiere {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "premieres")
+public class PremiereEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "premieres_id_seq", sequenceName = "premieres_id_seq")
     private Long id;
+
+    @Column(name = "name", length=64)
     private String name;
+    @Column(name = "description")
     private String description;
+    @Column(name = "agecategory")
     private Integer ageCategory;
+    @Column(name = "numberofseats")
     private Integer numberOfSeats;
 
 
-    public Premiere(Long id, String name, String description, Integer ageCategory, Integer numberOfSeats) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.ageCategory = ageCategory;
-        this.numberOfSeats = numberOfSeats;
+    public PremiereEntity() {
     }
 
-    public Premiere(String name, String description, Integer ageCategory, Integer numberOfSeats) {
+    public PremiereEntity(String name, String description, Integer ageCategory, Integer numberOfSeats) {
         this.name = name;
         this.description = description;
         this.ageCategory = ageCategory;
